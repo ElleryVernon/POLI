@@ -28,7 +28,7 @@ export async function POST(req: Request) {
   }
 
   const res = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo-1106',
+    model: 'gpt-4-1106-preview',
     messages: [
       {
         content: `너는 한국의 전설적인 쇼호스트야.
