@@ -1,0 +1,86 @@
+import { Toaster } from 'react-hot-toast'
+import localFont from 'next/font/local'
+
+import '@/app/globals.css'
+import { cn } from '@/lib/utils'
+import { TailwindIndicator } from '@/components/tailwind-indicator'
+import { Providers } from '@/components/providers'
+import { Header } from '@/components/header'
+
+const wanted = localFont({
+  src: [
+    {
+      path: 'fonts/WantedSans-ExtraBold.ttf',
+      weight: '800',
+      style: 'normal'
+    },
+    {
+      path: 'fonts/WantedSans-Bold.ttf',
+      weight: '700',
+      style: 'normal'
+    },
+    {
+      path: 'fonts/WantedSans-SemiBold.ttf',
+      weight: '600',
+      style: 'normal'
+    },
+    {
+      path: 'fonts/WantedSans-Medium.ttf',
+      weight: '500',
+      style: 'normal'
+    },
+    {
+      path: 'fonts/WantedSans-Regular.ttf',
+      weight: '400',
+      style: 'normal'
+    }
+  ]
+})
+
+export const metadata = {
+  metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
+  title: {
+    default: '래빗라이브 AI 큐시트',
+    template: `%s - 래빗라이브 AI 큐시트`
+  },
+  description: '래빗라이브 AI 큐시트',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png'
+  }
+}
+
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' }
+  ]
+}
+
+interface RootLayoutProps {
+  children: React.ReactNode
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn('antialiased', wanted.className)}>
+        <Toaster />
+        <Providers
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex flex-col min-h-screen">
+            {/* @ts-ignore */}
+            <Header />
+            <main className="flex flex-col flex-1 bg-muted/50">{children}</main>
+          </div>
+          <TailwindIndicator />
+        </Providers>
+      </body>
+    </html>
+  )
+}
