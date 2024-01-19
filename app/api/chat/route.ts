@@ -144,7 +144,7 @@ export async function POST(req: Request) {
       },
       ...messages.slice(-4)
     ],
-    temperature: 0.6,
+    temperature: 0.5,
     top_p: 0.9,
     max_tokens: 4096,
     frequency_penalty: 0.05,
