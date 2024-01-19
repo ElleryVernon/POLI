@@ -3,8 +3,8 @@ module.exports = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'cdn.discordapp.com',
+        protocol: 'http',
+        hostname: 'k.kakaocdn.net',
         port: '',
         pathname: '**'
       }
