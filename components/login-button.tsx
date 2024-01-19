@@ -6,7 +6,7 @@ import { signIn } from 'next-auth/react'
 import { cn } from '@/lib/utils'
 import { Button, type ButtonProps } from '@/components/ui/button'
 import { IconSpinner } from '@/components/ui/icons'
-import { FaDiscord } from 'react-icons/fa6'
+import { RiKakaoTalkFill } from "react-icons/ri";
 
 interface LoginButtonProps extends ButtonProps {
   showGithubIcon?: boolean
@@ -14,7 +14,7 @@ interface LoginButtonProps extends ButtonProps {
 }
 
 export function LoginButton({
-  text = 'Login with Discord',
+  text = 'Login with Kakaotalk',
   showGithubIcon = true,
   className,
   ...props
@@ -35,7 +35,7 @@ export function LoginButton({
       {isLoading ? (
         <IconSpinner className="mr-2 animate-spin" />
       ) : showGithubIcon ? (
-        <FaDiscord className="mr-2" />
+        <RiKakaoTalkFill className="mr-2" />
       ) : null}
       {text}
     </Button>
