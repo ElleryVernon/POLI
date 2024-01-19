@@ -1,5 +1,6 @@
 import NextAuth, { type DefaultSession } from 'next-auth'
 import Discord from 'next-auth/providers/discord'
+import KakaoProvider from 'next-auth/providers/kakao'
 
 declare module 'next-auth' {
   interface Session {
@@ -15,9 +16,9 @@ export const {
   auth
 } = NextAuth({
   providers: [
-    Discord({
-      clientId: process.env.DISCORD_CLIENT_ID,
-      clientSecret: process.env.DISCORD_CLIENT_SECRET,
+    KakaoProvider({
+      clientId: process.env.KAKAO_CLIENT_ID,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET
     })
   ],
   callbacks: {
