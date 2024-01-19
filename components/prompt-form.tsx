@@ -60,7 +60,7 @@ export function PromptForm({
               )}
             >
               <IconPlus />
-              <span className="sr-only">새로운 채팅t</span>
+              <span className="sr-only">새로운 채팅</span>
             </button>
           </TooltipTrigger>
           <TooltipContent>새로운 채팅</TooltipContent>
@@ -72,7 +72,7 @@ export function PromptForm({
           rows={1}
           value={input}
           onChange={e => setInput(e.target.value)}
-          placeholder="라디안에게 하고 싶은 말을 입력해보세요."
+          placeholder="하고 싶은 말을 입력해보세요."
           spellCheck={false}
           className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
         />
