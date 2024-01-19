@@ -14,7 +14,7 @@ const exampleMessages = [
 export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
   return (
     <div className="mx-auto max-w-2xl px-4">
-      <div className="rounded-lg border bg-background p-8">
+      <div className="rounded-xl border bg-background p-8">
         <h1 className="mb-2 text-lg font-semibold">
           안녕하세요! 래빗라이브 큐시트 AI 입니다!
         </h1>
