@@ -108,7 +108,7 @@ export async function POST(req: Request) {
       ...messages.slice(-4)
     ],
     model: 'gpt-4-turbo-preview',
-    temperature: 0.3,
+    temperature: 0.5,
     max_tokens: 4096,
     frequency_penalty: 0.05,
     presence_penalty: 0.1,
