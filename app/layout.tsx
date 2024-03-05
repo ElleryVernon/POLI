@@ -40,10 +40,10 @@ const wanted = localFont({
 export const metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   title: {
-    default: '래빗라이브 AI 큐시트',
-    template: `%s - 래빗라이브 AI 큐시트`
+    default: 'TOG.AI',
+    template: `%s - TOG.AI`
   },
-  description: '래빗라이브 AI 큐시트',
+  description: 'TOG.AI',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',

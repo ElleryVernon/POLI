@@ -6,8 +6,12 @@ import { IconArrowRight } from '@/components/ui/icons'
 
 const exampleMessages = [
   {
-    heading: '내 제품에 대한 큐시트를 작성해줘.',
-    message: `내 제품은 '드러머 원형 접시 플레이트 500ml'야. 장점은 '가벼우면서도 튼튼한 내구성', '좋은 가성비', '열에 강한 특수 재질' , '모던하고 깔끔한 디자인' 이고 고객리뷰는 '신혼 그릇 세트로 추천', '스크래치에 강한 내구성' 등이 있어. 주요 특징은 '겹겹히 쌓기 좋은 형태', '모던한 디자인', '음식 온도를 오래 유지' 등이 있어.`
+    heading: '요한복음 3장 16절 말씀은 어떤 내용인가요?',
+    message: `요한복음 3장 16절 말씀은 어떤 내용인가요?`
+  },
+  {
+    heading: '오늘의 말씀을 추천해주세요.',
+    message: `오늘의 말씀을 추천해주세요.`
   }
 ]
 
@@ -16,10 +20,10 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
     <div className="mx-auto max-w-2xl px-4">
       <div className="rounded-xl border bg-background p-8">
         <h1 className="mb-2 text-lg font-semibold">
-          안녕하세요! 래빗라이브 큐시트 AI 입니다!
+          안녕하세요! TOG.AI 입니다!
         </h1>
         <p className="mb-2 leading-normal text-muted-foreground">
-          도와드릴 일이 있다면 언제든지 말씀해주세요!
+          성경에 대해 궁금한 점이 있다면 언제든지 말씀해주세요!
         </p>
         <p className="leading-normal text-muted-foreground">
           아래 같은 주제로 대화를 시작해보는건 어떤가요?

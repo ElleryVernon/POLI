@@ -58,7 +58,7 @@ export function UserMenu({ user }: UserMenuProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-between w-full text-xs"
             >
-              래빗라이브 바로가기
+              인스타그램 바로가기
               <IconExternalLink className="w-3 h-3 ml-auto" />
             </a>
           </DropdownMenuItem>
