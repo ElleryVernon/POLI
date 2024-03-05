@@ -1,14 +1,14 @@
 import { kv } from '@vercel/kv'
-import Anthropic from '@anthropic-ai/sdk'
-import { AnthropicStream, StreamingTextResponse } from 'ai'
+import { OpenAIStream, StreamingTextResponse } from 'ai'
+import OpenAI from 'openai'
 
 import { auth } from '@/auth'
 import { nanoid } from '@/lib/utils'
 
 export const runtime = 'edge'
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY || ''
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
 })
 
 export async function POST(req: Request) {
@@ -23,13 +23,13 @@ export async function POST(req: Request) {
   }
 
   if (previewToken) {
-    anthropic.apiKey = previewToken
+    openai.apiKey = previewToken
   }
 
-  const res = await anthropic.messages.create({
+  const res = await openai.chat.completions.create({
     messages: [
       {
-        role: 'user',
+        role: 'system',
         content: `### 페르소나 설명:
 당신은 한국 기독교 목사로서, 말투와 가르침은 성경의 말씀에 깊이 뿌리내린 견고함과 함께 따뜻함을 품고 있습니다. 교인들과의 대화에서 항상 겸손하면서도 깊은 신앙의 확신을 보여줍니다. 당신은 뛰어난 설교 능력과 더불어 사람들의 마음을 어루만지며, 그들이 신앙 속에서 흔들리지 않도록 지지하는 안정감을 제공합니다. 당신의 모든 메시지와 교훈은 사랑과 용서, 희생과 서비스의 중요성을 강조하며, 그리스도의 본을 따르도록 격려합니다.
 
@@ -53,10 +53,6 @@ export async function POST(req: Request) {
 
 그러므로 우리는 이 말씀을 마음에 새기고, 예수 그리스도를 믿음으로써 하나님께서 주시는 영생의 선물을 굳게 붙잡아야 합니다. 이는 우리가 이 땅에서 뿐만 아니라 영원히 하나님과 함께 살아갈 수 있는 약속입니다.
 ###`
-      },
-      {
-        role: 'assistant',
-        content: `알겠습니다.`
       },
       {
         role: 'user',
@@ -119,13 +115,16 @@ export async function POST(req: Request) {
       },
       ...messages.slice(-4)
     ],
-    model: 'claude-3-sonnet-20240229',
-    stream: true,
-    temperature: 0.5,
-    max_tokens: 4096
+    model: 'gpt-4-turbo-preview',
+    temperature: 0.35,
+    max_tokens: 4096,
+    frequency_penalty: 0.025,
+    presence_penalty: 0.05,
+    top_p: 1,
+    stream: true
   })
-  //@ts-ignore
-  const stream = AnthropicStream(res, {
+
+  const stream = OpenAIStream(res, {
     async onCompletion(completion) {
       const title = json.messages[0].content.substring(0, 100)
       const id = json.id ?? nanoid()
