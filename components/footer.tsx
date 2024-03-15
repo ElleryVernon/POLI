@@ -13,7 +13,7 @@ export function FooterText({ className, ...props }: React.ComponentProps<'p'>) {
       {...props}
     >
       <>
-        tog.ai 는 아직 실험 단계입니다. 부자연스럽거나 사실이 아닌 답변을 생성할
+        폴리는 아직 실험 단계입니다. 부자연스럽거나 사실이 아닌 답변을 생성할
         수도 있습니다.
       </>
     </p>
