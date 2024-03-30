@@ -40,11 +40,11 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
           />
           <h1 className="mb-5 text-6xl font-bold mt-24">POLI</h1>
         </div>
-        <p className="text-lg leading-normal text-muted-foreground text-neutral-800 font-[400]">
+        <p className="text-lg leading-normal text-neutral-800 font-[400]">
           사이버범죄 대처의 모든 것 <span className="font-bold">POLI</span>
           에게 물어보세요.
         </p>
-        <p className="leading-normal text-lg text-muted-foreground text-neutral-800 font-[400] mb-28">
+        <p className="leading-normal text-lg text-neutral-800 font-[400] mb-28">
           대처 상담부터 진술서 작성까지 한 번에 이루어집니다.
         </p>
         <div className="flex mt-2 space-x-5">

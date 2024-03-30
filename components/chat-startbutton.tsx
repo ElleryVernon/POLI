@@ -42,7 +42,7 @@ export function ChatStartButton() {
       <ButtonScrollToBottom />
       <div className="mx-auto sm:max-w-2xl sm:px-4">
         <div className="px-4 py-2 space-y-4 sm:rounded-t-xl md:py-4">
-          <Button className="relative flex flex-col w-full px-8 overflow-hidden max-h-60 grow bg-background sm:border sm:px-1 h-14 shadow-none rounded-full bg-[#4E84EF] hover:bg-[#4E84EF] hover:brightness-90 transition-all font-[700]">
+          <Button className="relative flex flex-col w-full px-8 overflow-hidden max-h-60 grow sm:border sm:px-1 h-14 shadow-none rounded-full bg-[#4E84EF] hover:bg-[#4E84EF] hover:brightness-90 transition-all font-[700]">
             시작하기
           </Button>
           <FooterText className="hidden sm:block" />
