@@ -42,7 +42,7 @@ export function ClearHistory({
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>정말 히스토리를 비울까요??</AlertDialogTitle>
+          <AlertDialogTitle>정말 히스토리를 비울까요?</AlertDialogTitle>
           <AlertDialogDescription>
             이 액션은 서버에서 모든 채팅 히스토리를 영구적으로 삭제하며, 복구할 수 없습니다.
           </AlertDialogDescription>

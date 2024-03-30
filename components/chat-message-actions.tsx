@@ -8,7 +8,12 @@ import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard'
 import { cn } from '@/lib/utils'
 
 interface ChatMessageActionsProps extends React.ComponentProps<'div'> {
-  message: Message
+  message:
+    | Message
+    | {
+        content: string
+        role: string
+      }
 }
 
 export function ChatMessageActions({

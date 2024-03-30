@@ -21,6 +21,7 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { toast } from 'react-hot-toast'
 import { usePathname, useRouter } from 'next/navigation'
+import { ChatStartButton } from './chat-startbutton'
 
 const IS_PREVIEW = process.env.VERCEL_ENV === 'preview'
 export interface ChatProps extends React.ComponentProps<'div'> {
@@ -37,6 +38,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
   )
   const [previewTokenDialog, setPreviewTokenDialog] = useState(IS_PREVIEW)
   const [previewTokenInput, setPreviewTokenInput] = useState(previewToken ?? '')
+
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
       initialMessages,
@@ -57,28 +59,41 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         }
       }
     })
+  const chatlist = messages.length
+    ? messages[messages.length - 1].role === 'user'
+      ? [...messages, { content: ' ', role: 'assistant' }]
+      : messages
+    : []
   return (
     <>
       <div className={cn('pb-[200px] pt-4 md:pt-10', className)}>
         {messages.length ? (
           <>
-            <ChatList messages={messages} />
-            <ChatScrollAnchor trackVisibility={isLoading} />
+            <ChatList messages={chatlist} />
+            <ChatScrollAnchor messages={chatlist} />
           </>
         ) : (
           <EmptyScreen setInput={setInput} />
         )}
       </div>
-      <ChatPanel
-        id={id}
-        isLoading={isLoading}
-        stop={stop}
-        append={append}
-        reload={reload}
-        messages={messages}
-        input={input}
-        setInput={setInput}
-      />
+      <div>
+        {messages.length ? (
+          <ChatPanel
+            id={id}
+            isLoading={isLoading}
+            stop={stop}
+            append={append}
+            reload={reload}
+            messages={messages}
+            input={input}
+            setInput={setInput}
+          />
+        ) : (
+          <>
+            <ChatStartButton />
+          </>
+        )}
+      </div>
 
       <Dialog open={previewTokenDialog} onOpenChange={setPreviewTokenDialog}>
         <DialogContent>

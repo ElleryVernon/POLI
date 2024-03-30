@@ -128,10 +128,10 @@ export async function POST(req: Request) {
           }
         ]
       },
-      ...messages
+      ...messages.slice(-7)
     ],
     model: 'claude-3-sonnet-20240229',
-    max_tokens: 4000,
+    max_tokens: 3200,
     temperature: 0.2,
     stream: true
   })

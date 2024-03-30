@@ -60,12 +60,12 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
               tabIndex={-1}
               className="focus:bg-muted focus:ring-1 focus:ring-ring"
             >
-              <IconUsers className="mr-2" />
+              <IconUsers className="mr-2 text-neutral-800" />
             </TooltipTrigger>
             <TooltipContent>This is a shared chat.</TooltipContent>
           </Tooltip>
         ) : (
-          <IconMessage className="mr-2" />
+          <IconMessage className="mr-2 text-neutral-800" />
         )}
       </div>
       <Link
@@ -77,7 +77,7 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
         )}
       >
         <div
-          className="relative max-h-5 flex-1 select-none overflow-hidden text-ellipsis break-all"
+          className="relative max-h-5 flex-1 select-none overflow-hidden text-ellipsis break-all text-neutral-800"
           title={chat.title}
         >
           <span className="whitespace-nowrap">

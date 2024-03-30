@@ -1,29 +1,29 @@
 'use client'
-
 import * as React from 'react'
 import { useInView } from 'react-intersection-observer'
-
 import { useAtBottom } from '@/lib/hooks/use-at-bottom'
-
+import { Message } from 'ai'
 interface ChatScrollAnchorProps {
-  trackVisibility?: boolean
+  messages: (
+    | Message
+    | {
+        content: string
+        role: string
+      }
+  )[]
 }
-
-export function ChatScrollAnchor({ trackVisibility }: ChatScrollAnchorProps) {
+export function ChatScrollAnchor({ messages }: ChatScrollAnchorProps) {
   const isAtBottom = useAtBottom()
-  const { ref, entry, inView } = useInView({
-    trackVisibility,
+  const { ref, entry } = useInView({
     delay: 100,
     rootMargin: '0px 0px -150px 0px'
   })
 
   React.useEffect(() => {
-    if (isAtBottom && trackVisibility && !inView) {
-      entry?.target.scrollIntoView({
-        block: 'start'
-      })
+    if (isAtBottom) {
+      entry?.target.scrollIntoView({ block: 'start' })
     }
-  }, [inView, entry, isAtBottom, trackVisibility])
+  }, [messages.length])
 
   return <div ref={ref} className="h-px w-full" />
 }

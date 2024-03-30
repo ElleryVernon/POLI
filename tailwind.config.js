@@ -79,6 +79,10 @@ module.exports = {
           '100%': {
             transform: 'translateX(-100%)'
           }
+        },
+        loading: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(200%)' }
         }
       },
       animation: {
@@ -87,7 +91,8 @@ module.exports = {
         'slide-to-left':
           'slide-to-left 0.25s cubic-bezier(0.82, 0.085, 0.395, 0.895)',
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out'
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        loading: 'loading 1.5s ease-in-out infinite'
       }
     }
   },
