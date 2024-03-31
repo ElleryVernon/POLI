@@ -25,13 +25,13 @@ function getUserInitials(name: string) {
 
 export function UserMenu({ user }: UserMenuProps) {
   return (
-    <div className="flex items-center justify-between">
+    <div className=" fixed right-0 flex items-center justify-between">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="pl-0">
             {user?.image ? (
               <Image
-                className="w-6 h-6 transition-opacity duration-300 rounded-full select-none ring-1 ring-zinc-100/10 hover:opacity-80"
+                className="w-9 h-9 transition-opacity duration-300 rounded-full border-2 border-blue-500 hover:opacity-80"
                 src={user?.image ? `${user.image}` : ''}
                 alt={user.name ?? 'Avatar'}
                 height={48}
@@ -42,16 +42,17 @@ export function UserMenu({ user }: UserMenuProps) {
                 {user?.name ? getUserInitials(user?.name) : null}
               </div>
             )}
-            <span className="ml-2">{user?.name}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent sideOffset={8} align="start" className="w-[180px]">
           <DropdownMenuItem className="flex-col items-start">
-            <div className="text-xs font-medium">{user?.name}</div>
-            <div className="text-xs text-zinc-500">{user?.email}</div>
+            <div className="text-sm font-medium">
+              안녕하세요, {user?.name}님.
+            </div>
+            <div className="text-sm text-zinc-500">{user?.email}</div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
+          {/* <DropdownMenuItem asChild>
             <a
               href="/"
               target="_blank"
@@ -61,16 +62,16 @@ export function UserMenu({ user }: UserMenuProps) {
               인스타그램 바로가기
               <IconExternalLink className="w-3 h-3 ml-auto" />
             </a>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
           <DropdownMenuItem
             onClick={() =>
               signOut({
                 callbackUrl: '/'
               })
             }
-            className="text-xs"
+            className="text-sm cursor-pointer"
           >
-            로그아웃
+            로그아웃 하기
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

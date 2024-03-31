@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
+import { auth } from '@/auth'
 
 const wanted = localFont({
   src: [
@@ -62,20 +63,20 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const session = await auth()
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn('antialiased', wanted.className)}>
         <Toaster />
         <Providers
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">
             {/* @ts-ignore */}
-            <Header />
+            <Header session={session} />
             <main className="flex flex-col flex-1 bg-muted/50">{children}</main>
           </div>
           <TailwindIndicator />

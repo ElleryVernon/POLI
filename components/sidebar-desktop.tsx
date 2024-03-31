@@ -1,5 +1,5 @@
+// sidebar-desktop.tsx
 import { Sidebar } from '@/components/sidebar'
-
 import { auth } from '@/auth'
 import { ChatHistory } from '@/components/chat-history'
 
@@ -11,7 +11,7 @@ export async function SidebarDesktop() {
   }
 
   return (
-    <Sidebar className="peer absolute inset-y-0 z-30 hidden -translate-x-full bg-muted duration-300 ease-in-out data-[state=open]:translate-x-0 lg:flex lg:w-[250px]">
+    <Sidebar className="fixed inset-y-0 left-0 z-30 w-[250px] bg-muted duration-300 ease-in-out transform transition-transform -translate-x-full data-[state=open]:translate-x-0 hidden lg:flex lg:w-[250px]">
       <ChatHistory userId={session.user.id} />
     </Sidebar>
   )

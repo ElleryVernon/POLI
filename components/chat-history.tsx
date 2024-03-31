@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { SidebarList } from '@/components/sidebar-list'
 import { buttonVariants } from '@/components/ui/button'
 import { IconPlus } from '@/components/ui/icons'
+import { SidebarToggle } from './sidebar-toggle'
 
 interface ChatHistoryProps {
   userId?: string
@@ -14,12 +15,16 @@ interface ChatHistoryProps {
 export async function ChatHistory({ userId }: ChatHistoryProps) {
   return (
     <div className="flex flex-col h-full">
+      <div className="px-4 h-16 flex items-center">
+        <SidebarToggle />
+      </div>
+
       <div className="px-2 my-4">
         <Link
           href="/"
           className={cn(
             buttonVariants({ variant: 'outline' }),
-            'h-10 w-full justify-start bg-zinc-50 px-4 shadow-none transition-colors hover:bg-zinc-200/40 rounded-full'
+            'h-10 w-full justify-start bg-[#DCE3EA] px-4 shadow-none transition-colors hover:bg-[#D4DAE1] rounded-full text-[#454746]'
           )}
         >
           <IconPlus className="-translate-x-2 stroke-2" />새 상담 시작
