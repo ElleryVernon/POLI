@@ -27,7 +27,7 @@ export function ChatMessage({
 
   return (
     <div
-      className={cn('group relative mb-4 flex items-start md:-ml-12')}
+      className={cn('w-full group relative mb-4 flex md:-ml-12 px-2 sm:px-0')}
       style={{
         minHeight:
           isEnd && message.role === 'assistant'
@@ -50,7 +50,7 @@ export function ChatMessage({
           <GoDependabot className="h-4 w-4" fill="currentColor" />
         )}
       </div>
-      <div className="flex-1 space-y-2 overflow-hidden px-5 flex flex-col w-full">
+      <div className="flex-1 space-y-2 overflow-hidden px-5 flex flex-col">
         {isEnd &&
         message.role === 'assistant' &&
         message.content.trim() === '' ? (

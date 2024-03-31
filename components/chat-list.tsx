@@ -1,7 +1,5 @@
 'use client'
-
 import { type Message } from 'ai'
-
 import { ChatMessage } from '@/components/chat-message'
 import { useRef } from 'react'
 
@@ -14,7 +12,7 @@ export function ChatList({ messages }: ChatList) {
   const assistantMessageRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div className="items-center mx-auto flex flex-col space-y-4 md:space-y-8 px-4 md:px-8 lg:px-16">
+    <div className="relative mx-auto max-w-2xl space-y-4 md:space-y-10">
       {messages.map((message, index) => {
         const isEnd = index === messages.length - 1
         return (
@@ -26,7 +24,7 @@ export function ChatList({ messages }: ChatList) {
                 ? userMessageRef
                 : assistantMessageRef
             }
-            className={`${index < messages.length - 1 && 'mb-10'}`}
+            className={`${index < messages.length - 1 && 'mb-12'}`}
           >
             <ChatMessage
               message={message}
