@@ -32,7 +32,7 @@ export function ChatMessage({
       style={{
         minHeight:
           isEnd && message.role === 'assistant'
-            ? `calc(100vh - ${userHeight + 336}px)`
+            ? `calc(100vh - ${userHeight + 400}px)`
             : undefined
       }}
       {...props}
