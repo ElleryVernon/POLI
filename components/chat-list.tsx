@@ -14,7 +14,7 @@ export function ChatList({ messages }: ChatList) {
   const assistantMessageRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div className="mx-auto flex flex-col space-y-4 md:space-y-8 px-4 md:px-8 lg:px-16">
+    <div className="items-center mx-auto flex flex-col space-y-4 md:space-y-8 px-4 md:px-8 lg:px-16">
       {messages.map((message, index) => {
         const isEnd = index === messages.length - 1
         return (
