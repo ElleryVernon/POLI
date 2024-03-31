@@ -12,22 +12,37 @@ import { SidebarToggle } from './sidebar-toggle'
 import { Session } from 'next-auth/types'
 import { useSidebar } from '@/lib/hooks/use-sidebar'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
 export async function UserOrLogin({ session }: { session: Session | null }) {
   const { isSidebarOpen, isLoading } = useSidebar()
   return (
-    <div className="flex items-between">
+    <div className="flex items-between transition-all duration-500">
       {session?.user ? (
         <div>
           <SidebarMobile>
             <ChatHistory userId={session.user.id} />
           </SidebarMobile>
-          <div
-            className={cn(
-              session?.user && isSidebarOpen && !isLoading ? 'hidden' : 'block'
-            )}
-          >
-            <SidebarToggle />
+          <div className="flex items-center">
+            <div
+              className={cn(
+                session?.user && isSidebarOpen && !isLoading
+                  ? 'hidden'
+                  : 'block mr-3'
+              )}
+            >
+              <SidebarToggle />
+            </div>
+            <div className="flex items-center">
+              <Image
+                src={'/icons/logo.svg'}
+                alt={'Service Logo'}
+                width={24}
+                height={24}
+                className="mr-1"
+              />
+              <h1 className="font-extrabold text-xl text-neutral-700">POLI</h1>
+            </div>
           </div>
         </div>
       ) : (
@@ -48,12 +63,16 @@ export async function UserOrLogin({ session }: { session: Session | null }) {
   )
 }
 
+const MemoizedUserOrLogin = React.memo(UserOrLogin, (prevProps, nextProps) => {
+  return prevProps.session === nextProps.session
+})
+
 export function Header({ session }: { session: Session | null }) {
   const { isSidebarOpen, isLoading } = useSidebar()
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 transition-[margin] bg-white',
+        'fixed top-0 z-50 flex items-center justify-between w-full h-16 px-4 shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 transition-[margin] bg-white',
         session?.user && isSidebarOpen && !isLoading
           ? 'ml-0 lg:ml-[250px] transition-none'
           : 'ml-0'
@@ -61,9 +80,13 @@ export function Header({ session }: { session: Session | null }) {
     >
       <div className="flex items-center">
         <React.Suspense fallback={<div className="flex-1 overflow-auto" />}>
-          <UserOrLogin session={session} />
+          <MemoizedUserOrLogin session={session} />
         </React.Suspense>
       </div>
     </header>
   )
 }
+
+export const MemoizedHeader = React.memo(Header, (prevProps, nextProps) => {
+  return prevProps.session === nextProps.session
+})

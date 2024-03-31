@@ -10,6 +10,7 @@ import { IconUser } from '@/components/ui/icons'
 import { ChatMessageActions } from '@/components/chat-message-actions'
 import { GoDependabot } from 'react-icons/go'
 import { RefObject } from 'react'
+import Image from 'next/image'
 
 export interface ChatMessageProps {
   message: Message | { content: string; role: string }
@@ -39,17 +40,22 @@ export function ChatMessage({
       <div
         className={cn(
           'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-full mb-3 border',
-          message.role === 'user'
-            ? 'bg-background'
-            : 'bg-primary text-primary-foreground'
+          message.role === 'user' ? 'flex' : 'hidden'
         )}
       >
-        {message.role === 'user' ? (
-          <IconUser />
-        ) : (
-          <GoDependabot className="h-4 w-4" fill="currentColor" />
-        )}
+        <IconUser />
       </div>
+
+      <Image
+        src={'/icons/logo.svg'}
+        alt={'Service Logo'}
+        width={24}
+        height={24}
+        className={cn(
+          'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-full mb-3 border-2',
+          message.role === 'user' ? 'hidden' : 'flex'
+        )}
+      />
       <div className="flex-1 space-y-2 overflow-hidden px-5 flex flex-col">
         {isEnd &&
         message.role === 'assistant' &&

@@ -12,7 +12,7 @@ export function ChatList({ messages }: ChatList) {
   const assistantMessageRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div className="relative mx-auto max-w-2xl space-y-4 md:space-y-10 mt-6 md:mt-0">
+    <div className="relative mx-auto max-w-2xl space-y-4 md:space-y-10 mt-14">
       {messages.map((message, index) => {
         const isEnd = index === messages.length - 1
         return (

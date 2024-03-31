@@ -22,6 +22,7 @@ import { Input } from './ui/input'
 import { toast } from 'react-hot-toast'
 import { usePathname, useRouter } from 'next/navigation'
 import { ChatStartButton } from './chat-startbutton'
+import { useSidebar } from '@/lib/hooks/use-sidebar'
 
 const IS_PREVIEW = process.env.VERCEL_ENV === 'preview'
 export interface ChatProps extends React.ComponentProps<'div'> {
@@ -30,6 +31,7 @@ export interface ChatProps extends React.ComponentProps<'div'> {
 }
 
 export function Chat({ id, initialMessages, className }: ChatProps) {
+  const { isSidebarOpen, isLoading: sidebarLoading } = useSidebar()
   const router = useRouter()
   const path = usePathname()
   const [previewToken, setPreviewToken] = useLocalStorage<string | null>(
@@ -66,7 +68,13 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
     : []
   return (
     <>
-      <div className={cn('pb-[200px] pt-4 md:pt-10', className)}>
+      <div
+        className={cn(
+          'pb-[200px] pt-4 md:pt-10 transition-[margin] duration-500',
+          isSidebarOpen && !isLoading ? 'lg:ml-[250px]' : 'ml-0',
+          className
+        )}
+      >
         {messages.length ? (
           <>
             <ChatList messages={chatlist} />
@@ -89,9 +97,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
             setInput={setInput}
           />
         ) : (
-          <>
-            <ChatStartButton />
-          </>
+          <ChatStartButton />
         )}
       </div>
 
