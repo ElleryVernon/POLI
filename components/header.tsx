@@ -33,7 +33,7 @@ export async function UserOrLogin({ session }: { session: Session | null }) {
             >
               <SidebarToggle />
             </div>
-            <div className="hidden sm:flex items-center">
+            <div className="hidden md:flex items-center">
               <Image
                 src={'/icons/logo.svg'}
                 alt={'Service Logo'}
