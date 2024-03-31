@@ -70,8 +70,8 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
     <>
       <div
         className={cn(
-          'pb-[200px] pt-4 md:pt-10 transition-[margin] duration-500',
-          isSidebarOpen && !isLoading ? 'lg:ml-[250px]' : 'ml-0',
+          'pb-[200px] pt-4 md:pt-10 transition-[margin] duration-500 bg-white',
+          isSidebarOpen && !isLoading ? 'lg:ml-[280px]' : 'ml-0',
           className
         )}
       >

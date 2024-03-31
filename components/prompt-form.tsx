@@ -45,7 +45,7 @@ export function PromptForm({
       }}
       ref={formRef}
     >
-      <div className="relative flex flex-col w-full px-8 overflow-hidden max-h-60 grow bg-background sm:rounded-md sm:border sm:px-12">
+      <div className="relative flex flex-col w-full px-8 overflow-hidden max-h-60 grow bg-background rounded-full sm:border sm:px-12">
         <Tooltip>
           <TooltipTrigger asChild>
             <button
@@ -82,6 +82,7 @@ export function PromptForm({
               <Button
                 type="submit"
                 size="icon"
+                className="rounded-full"
                 disabled={isLoading || input === ''}
               >
                 <IconArrowElbow />

@@ -8,6 +8,8 @@ import { ButtonScrollToBottom } from '@/components/button-scroll-to-bottom'
 import { IconRefresh, IconShare, IconStop } from '@/components/ui/icons'
 import { FooterText } from '@/components/footer'
 import { ChatShareDialog } from '@/components/chat-share-dialog'
+import { useSidebar } from '@/lib/hooks/use-sidebar'
+import { cn } from '@/lib/utils'
 
 export interface ChatPanelProps
   extends Pick<
@@ -36,9 +38,14 @@ export function ChatStartButton() {
   //   messages
   // : ChatPanelProps
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false)
-
+  const { isSidebarOpen, isLoading: sidebarLoading } = useSidebar()
   return (
-    <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-muted/30 from-0% to-muted/30 to-50% animate-in duration-300 ease-in-out  peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
+    <div
+      className={cn(
+        'fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-muted/30 from-0% to-muted/30 to-50% animate-in ease-in-out  peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px] transition-[margin] duration-500',
+        isSidebarOpen && !sidebarLoading ? 'lg:ml-[120px]' : 'ml-0'
+      )}
+    >
       <ButtonScrollToBottom />
       <div className="mx-auto sm:max-w-2xl sm:px-4">
         <div className="px-4 py-2 space-y-4 sm:rounded-t-xl md:py-4">
