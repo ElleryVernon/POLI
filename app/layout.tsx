@@ -41,10 +41,10 @@ const wanted = localFont({
 export const metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   title: {
-    default: 'TOG.AI',
-    template: `%s - TOG.AI`
+    default: 'POLI',
+    template: `%s - POLI`
   },
-  description: 'TOG.AI',
+  description: 'POLI',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
