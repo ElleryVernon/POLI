@@ -28,6 +28,7 @@ export function ChatList({ messages }: ChatList) {
           >
             <ChatMessage
               message={message}
+              index={index}
               isEnd={isEnd}
               userMessageRef={userMessageRef}
             />

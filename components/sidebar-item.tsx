@@ -62,7 +62,7 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
             >
               <IconUsers className="mr-2 text-neutral-800" />
             </TooltipTrigger>
-            <TooltipContent>This is a shared chat.</TooltipContent>
+            <TooltipContent>공유된 채팅입니다.</TooltipContent>
           </Tooltip>
         ) : (
           <IconMessage className="mr-2 text-neutral-800" />

@@ -46,7 +46,7 @@ export function ChatPanel({
     <div
       className={cn(
         'fixed inset-x-0 bottom-0 w-full bg-white animate-in ease-in-out peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px] transition-[margin] duration-500',
-        isSidebarOpen && !isLoading ? 'lg:ml-[120px]' : 'ml-0'
+        isSidebarOpen && !sidebarLoading ? 'lg:ml-[120px]' : 'ml-0'
       )}
     >
       <ButtonScrollToBottom />

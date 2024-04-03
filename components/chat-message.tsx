@@ -13,12 +13,14 @@ import { RefObject } from 'react'
 import Image from 'next/image'
 
 export interface ChatMessageProps {
+  index: number
   message: Message | { content: string; role: string }
   isEnd: boolean
   userMessageRef: RefObject<HTMLDivElement>
 }
 
 export function ChatMessage({
+  index,
   message,
   isEnd,
   userMessageRef,
@@ -28,7 +30,10 @@ export function ChatMessage({
 
   return (
     <div
-      className={cn('w-full group relative mb-4 flex md:-ml-12 px-2 sm:px-0')}
+      className={cn(
+        'w-full group relative mb-4 flex md:-ml-12 px-2 sm:px-0',
+        index === 0 && 'hidden'
+      )}
       style={{
         minHeight:
           isEnd && message.role === 'assistant'

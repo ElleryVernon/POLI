@@ -21,7 +21,6 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { toast } from 'react-hot-toast'
 import { usePathname, useRouter } from 'next/navigation'
-import { ChatStartButton } from './chat-startbutton'
 import { useSidebar } from '@/lib/hooks/use-sidebar'
 
 const IS_PREVIEW = process.env.VERCEL_ENV === 'preview'
@@ -61,6 +60,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         }
       }
     })
+
   const chatlist = messages.length
     ? messages[messages.length - 1].role === 'user'
       ? [...messages, { content: ' ', role: 'assistant' }]
@@ -71,7 +71,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       <div
         className={cn(
           'pb-[200px] pt-4 md:pt-10 transition-[margin] duration-500 bg-white',
-          isSidebarOpen && !isLoading ? 'lg:ml-[280px]' : 'ml-0',
+          isSidebarOpen && !sidebarLoading ? 'lg:ml-[280px]' : 'ml-0',
           className
         )}
       >
@@ -81,11 +81,11 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
             <ChatScrollAnchor messages={chatlist} />
           </>
         ) : (
-          <EmptyScreen setInput={setInput} />
+          <EmptyScreen setInput={setInput} append={append} />
         )}
       </div>
       <div>
-        {messages.length ? (
+        {messages.length && (
           <ChatPanel
             id={id}
             isLoading={isLoading}
@@ -96,8 +96,6 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
             input={input}
             setInput={setInput}
           />
-        ) : (
-          <ChatStartButton />
         )}
       </div>
 
