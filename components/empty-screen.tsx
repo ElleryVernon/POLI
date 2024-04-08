@@ -22,7 +22,7 @@ const exampleMessages = [
   {
     title: '만능 진술서 도우미',
     paragraph: '진술서 편하게 작성하고 싶은데 도와줘.',
-    message: `진술서 편하게 작성하고 싶은데 도와줘.`,
+    message: `진술서 편하게 작성하고 싶은데 도와줘`,
     svgPath: '/icons/icon-pen-default.svg'
   },
   {
